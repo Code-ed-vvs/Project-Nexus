@@ -1,18 +1,9 @@
 import openai
 
-# Set your OpenAI API key
+# Seting up our api key
 openai.api_key = "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"
 
-
 def analyze_response(problem_description, student_response):
-    """
-    Analyze the student's response for spam and relevance.
-    Args:
-        problem_description (str): The problem description provided by the company.
-        student_response (str): The student's response to the problem.
-    Returns:
-        dict: Contains spam status, relevance score, and analysis summary.
-    """
     prompt = (
         f"Problem Description: {problem_description}\n\n"
         f"Student's Response: {student_response}\n\n"
@@ -26,7 +17,7 @@ def analyze_response(problem_description, student_response):
     try:
         # Use gpt-3.5-turbo model for text completion
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Use gpt-3.5-turbo model
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt}
@@ -65,8 +56,6 @@ def analyze_response(problem_description, student_response):
 
 # Main function
 if __name__ == "__main__":
-    print("=== ChatGPT Spam and Relevance Checker ===")
-
     # Input the problem description and student's response
     problem_description = input("Enter the problem description provided by the company: ")
     student_response = input("Enter the student's response to the problem: ")
