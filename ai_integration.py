@@ -1,10 +1,10 @@
 import openai
-
-# Seting up our api key
-openai.api_key = "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"
+from config import OPENAI_API_KEY
+# Seting up your api key
+openai.api_key = f"{OPENAI_API_KEY}"
 
 def analyze_response(problem_description, student_response):
-    prompt = (
+    prompt =  (
         f"Problem Description: {problem_description}\n\n"
         f"Student's Response: {student_response}\n\n"
         "Tasks:\n"
