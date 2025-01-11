@@ -1,1 +1,17 @@
-style
+body{
+background: linear-gradient(to right, #6a1b9a, #9c27b0);
+}
+
+*{
+font-family:"Helvetica";
+color: white;
+}
+
+container{
+background-color: black;
+padding : 30px;
+display : flex;
+width : 80%;
+shadow: 5 px 10 px  20 px rgba(0,0,0,0.5);
+margin: auto;
+}
