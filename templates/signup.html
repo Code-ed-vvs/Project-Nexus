@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* Set the background gradient with 51% purple and 49% black */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to right, #6a0dad 51%, black 49%); /* 51% purple and 49% black */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        
+        <form id="signupForm" action="http://localhost:8000/submit" method="POST" onsubmit="return validateForm()">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Sign Up</button>
+            <p class="error" id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // List of taken usernames (This would usually be checked on the server)
+        const takenUsernames = ["john_doe", "jane_smith", "admin123"];
+
+        function validateForm() {
+            const username = document.getElementById("username").value;
+            const errorMessage = document.getElementById("error-message");
+
+            // Check if the username is already taken
+            if (takenUsernames.includes(username)) {
+                errorMessage.textContent = "This username is already taken. Please choose another.";
+                return false; // Prevent form submission
+            }
+
+            // Clear error message if username is not taken
+            errorMessage.textContent = "";
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
