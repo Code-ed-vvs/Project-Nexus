@@ -1,0 +1,41 @@
+<!-- templates/student_dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Current Problems</h2>
+    
+    {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Posted by: {{ post.author.username }}</h6>
+                            
+                            <div class="card-text mb-3">
+                                <strong>Description:</strong><br>
+                                {{ post.description[:200] }}{% if post.description|length > 200 %}...{% endif %}
+                            </div>
+                            
+                            <p class="card-text">
+                                <strong>Valid Until:</strong> {{ post.deadline.strftime('%Y-%m-%d') }}
+                            </p>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn btn-primary">View Details</a>
+                                <small class="text-muted">{{ post.solutions|length }} solutions</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            No problems available at the moment. Please check back later!
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

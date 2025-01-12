@@ -1,0 +1,27 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Recent Posts</h3>
+            <ul>
+                {% for post in posts %}
+                    <li><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="content">
+            {% block content %}
+            <!-- Content will be injected here -->
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

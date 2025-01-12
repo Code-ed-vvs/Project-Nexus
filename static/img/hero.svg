@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="600" viewBox="0 0 900 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#2563eb" d="M0 0h900v600H0z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M450 120c-82.843 0-150 67.157-150 150s67.157 150 150 150 150-67.157 150-150-67.157-150-150-150ZM270 270c0-99.411 80.589-180 180-180s180 80.589 180 180-80.589 180-180 180-180-80.589-180-180Z" clip-rule="evenodd"/>
+  <path fill="#fff" d="M450 201c-38.108 0-69 30.892-69 69s30.892 69 69 69 69-30.892 69-69-30.892-69-69-69Z"/>
+  <path stroke="#fff" stroke-linecap="round" stroke-width="24" d="M450 150v240M330 270h240"/>
+</svg>

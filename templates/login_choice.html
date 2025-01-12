@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center mb-4">
+            <h1 class="display-4 mb-3">Welcome to Project Nexus</h1>
+            <p class="lead text-secondary mb-5">Choose your role to continue</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card post-card">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <svg class="text-primary" width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="mb-3">Company</h3>
+                    <p class="text-secondary mb-4">Post job opportunities and find talented students</p>
+                    <a href="{{ url_for('company_login') }}" class="btn btn-primary btn-lg w-100">Login as Company</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card post-card">
+                <div class="card-body text-center p-5">
+                    <div class="mb-4">
+                        <svg class="text-primary" width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="mb-3">Student</h3>
+                    <p class="text-secondary mb-4">Browse opportunities and showcase your skills</p>
+                    <a href="{{ url_for('student_dashboard') }}" class="btn btn-primary btn-lg w-100">Login as Student</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-10 text-center">
+            <p class="text-secondary">Don't have an account? <a href="{{ url_for('signup') }}" class="text-primary fw-bold">Sign up now</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

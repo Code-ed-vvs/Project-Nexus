@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="error-page">
+        <h1>500</h1>
+        <p>An unexpected error has occurred. Please try again later.</p>
+        <a href="{{ url_for('signup') }}" class="btn btn-primary">Return to Home</a>
+    </div>
+{% endblock %}

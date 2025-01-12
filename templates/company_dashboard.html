@@ -1,0 +1,58 @@
+<!-- templates/company_dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5 mb-0">Company Dashboard</h1>
+            <p class="text-secondary">Manage your Problem postings and Community Review</p>
+        </div>
+        <div class="col-md-4 text-md-end d-flex align-items-center justify-content-md-end">
+            <a href="{{ url_for('add_post') }}" class="btn btn-primary">
+                <svg class="me-2" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Add New Post
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="col-md-6 mb-4">
+                    <div class="card post-card h-100">
+                        <div class="card-body">
+                            <h3 class="post-title">{{ post.title }}</h3>
+                            <p class="post-description">{{ post.description[:200] }}{% if post.description|length > 200 %}...{% endif %}</p>
+                            <div class="post-meta d-flex justify-content-between align-items-center">
+                                <span>
+                                    <svg class="me-2" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                    {{ post.email }}
+                                </span>
+                                <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body text-center py-5">
+                        <svg class="text-secondary mb-3" width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+                        </svg>
+                        <h3 class="text-secondary">No Posts Yet</h3>
+                        <p class="text-secondary mb-4">Start by creating your first Problem/Review</p>
+                        <a href="{{ url_for('add_post') }}" class="btn btn-primary">Create Post</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
